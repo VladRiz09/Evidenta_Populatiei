@@ -1,0 +1,869 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #007bff;
+  margin-top: 20px;
+}
+
+h2, h3 {
+  text-align: center;
+  color: #555;
+}
+
+/* Search Section */
+.search-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.search-input {
+  padding: 10px;
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.search-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Table Styles */
+table {
+  width: 90%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+table thead {
+  background-color: #007bff;
+  color: white;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.edit-btn {
+  padding: 5px 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background-color: #218838;
+}
+
+.details-btn {
+  padding: 5px 10px;
+  background-color: #ffc107;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.details-btn:hover {
+  background-color: #e0a800;
+}
+
+/* Modal Styles */
+#edit-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 600px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+#edit-modal .modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#edit-modal h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+#edit-modal label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+#edit-modal input,
+#edit-modal select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+#edit-modal button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#edit-modal button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+#edit-modal button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+#edit-modal button#cancel-btn {
+  background-color: #dc3545;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+#edit-modal button#cancel-btn:hover {
+  background-color: #c82333;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translate(-50%, -60%);
+  }
+  to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+  }
+}
+
+.modal-content p ul {
+  max-height: 200px; /* Setează o înălțime maximă */
+  overflow-y: auto;  /* Activează scroll-ul vertical */
+  padding-left: 20px;
+}
+
+.modal-content p ul li {
+  word-wrap: break-word; /* Rupe rândurile prea lungi */
+  margin-bottom: 5px; /* Spațiere între elementele listei */
+}
+/* Stiluri pentru modal */
+#edit-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%; /* Ajustează după preferință */
+  max-height: 90%; /* Maxim 90% din înălțimea vizibilă */
+  overflow-y: auto; /* Permite scroll-ul vertical */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Asigură-te că este deasupra altor elemente */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Pentru a face pagina de dedesubt mai puțin vizibilă */
+body.modal-open {
+  overflow: hidden; /* Dezactivează scroll-ul pe fundal */
+}
+
+/* Conținutul modalului */
+.modal-content {
+  overflow-y: auto; /* Scroll în interiorul modalului */
+  max-height: calc(90vh - 40px); /* Ajustează înălțimea */
+}
+
+#search-contact-section {
+  margin-top: 30px;
+}
+
+#contact-results-table {
+  margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#contact-results-table th,
+#contact-results-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+#contact-results-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+#contact-results-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#contact-results-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+#expired-docs-section {
+  margin-top: 30px;
+}
+
+#expired-docs-table {
+  margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#expired-docs-table th,
+#expired-docs-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+#expired-docs-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+#expired-docs-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#expired-docs-table tr:hover {
+  background-color: #f1f1f1;
+}
+/* Footer Styles */
+#main-footer {
+  background-color: #007bff; /* Albastru intens */
+  color: white; /* Text alb */
+  text-align: center; /* Aliniere centrală */
+  padding: 15px 0; /* Spațiere verticală */
+  font-size: 14px; /* Dimensiune mai mică */
+  position: relative; /* Poziționare standard */
+  bottom: 0;
+  width: 100%;
+}
+
+#main-footer span {
+  color: #ff6b6b; /* Roșu pentru inimă */
+}
+
+#main-footer p {
+  margin: 0; /* Eliminare spațiere */
+  font-weight: 400; /* Font mediu */
+}
+
+
+/* Container pentru notificări */
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Stil general pentru notificări */
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #007bff; /* Albastru pentru succes */
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  font-weight: 500;
+  animation: fadeIn 0.5s ease, fadeOut 0.5s ease 4.5s;
+  transition: transform 0.3s ease;
+}
+
+/* Efect de hover */
+.toast:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+/* Stiluri pentru notificări de succes */
+.toast.success {
+  background-color: #28a745; /* Verde intens */
+}
+
+/* Stiluri pentru notificări de eroare */
+.toast.error {
+  background-color: #dc3545; /* Roșu intens */
+}
+
+/* Stiluri pentru notificări de avertizare */
+.toast.warning {
+  background-color: #ffc107; /* Galben intens */
+  color: #333; /* Text mai întunecat */
+}
+
+/* Stiluri pentru notificări de informare */
+.toast.info {
+  background-color: #17a2b8; /* Albastru deschis */
+}
+
+/* Animații */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Icon pentru notificări */
+.toast-icon {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+
+#recent-events-section {
+  display: none;
+  margin: 20px;
+}
+
+#recent-events-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#recent-events-table th, #recent-events-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+#recent-events-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+#recent-events-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#recent-events-table tr:hover {
+  background-color: #f1f1f1;
+}
+#most-recent-case-section {
+  margin-top: 20px;
+}
+
+#most-recent-case-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#most-recent-case-table th,
+#most-recent-case-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+#most-recent-case-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+#most-recent-case-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#most-recent-case-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+#recent {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#recent:hover {
+  background-color: #0056b3;
+
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Secțiunea Mașini */
+#cars-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+#cars-section h2 {
+  color: #007bff;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#cars-section .action-btn {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#cars-section .action-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Stil tabel */
+#cars-table {
+  width: 90%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#cars-table th,
+#cars-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+#cars-table thead {
+  background-color: #007bff;
+  color: white;
+}
+
+#cars-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#cars-table tr:hover {
+  background-color: #f1f1f1;
+}
+#search-contact-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+#search-contact-section h2, #search-contact-section h3 {
+  color: #007bff;
+}
+
+#search-contact-section .search-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#person-info {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: left;
+}
+
+#person-info p {
+  margin: 5px 0;
+}
+
+#contact-results-table {
+  margin-top: 20px;
+  width: 90%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#contact-results-table th,
+#contact-results-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+#contact-results-table th {
+  background-color: #007bff;
+  color: white;
+}
+
+#contact-results-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#contact-results-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+
+/* Stiluri pentru secțiuni */
+section {
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f8f9fa; /* Gri deschis */
+  border: 1px solid #ddd; /* Margine subtilă */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adâncime */
+  width: 90%; /* Centrare pe pagină */
+}
+
+/* Stiluri pentru titluri de secțiuni */
+section h2 {
+  color: #007bff; /* Albastru intens */
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd; /* Linie sub titlu */
+  padding-bottom: 10px;
+}
+
+/* Stiluri pentru delimitarea între secțiuni */
+section:not(:last-child) {
+  margin-bottom: 60px;
+  border-bottom: 2px dashed #ccc; /* Linie de delimitare între secțiuni */
+  padding-bottom: 30px;
+}
+
+/* Stiluri pentru butoane din secțiuni */
+section button {
+  display: inline-block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+section button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Tabele */
+section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+section table th,
+section table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+section table th {
+  background-color: #007bff; /* Albastru */
+  color: white;
+}
+
+section table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+section table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Informații persoană (specific pentru secțiuni) */
+#person-info {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #e9ecef; /* Gri foarte deschis */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: left;
+  font-size: 1rem;
+}
+
+#person-info p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+/* Footer */
+#main-footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #343a40; /* Gri închis */
+  color: white;
+  margin-top: 40px;
+  border-top: 2px solid #ddd;
+}
+
+#main-footer p {
+  margin: 0;
+}
+
+/* Stilizare generală pentru secțiune */
+#add-person-section {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Titlul secțiunii */
+#add-person-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5em;
+  color: #333;
+}
+
+/* Formularul */
+#add-person-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Etichete */
+#add-person-form label {
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  color: #555;
+}
+
+/* Input-uri text și date */
+#add-person-form input[type="text"],
+#add-person-form input[type="date"],
+#add-person-form select {
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s;
+}
+
+#add-person-form input[type="text"]:focus,
+#add-person-form input[type="date"]:focus,
+#add-person-form select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Select dropdown */
+#add-person-form select {
+  cursor: pointer;
+}
+
+/* Butonul de submit */
+#add-person-form button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#add-person-form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Mesajele de eroare (opțional) */
+.error-message {
+  font-size: 0.9em;
+  color: #d9534f;
+  margin-top: -10px;
+}
+
+#delete-section {
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+}
+
+#delete-section h2 {
+  color: #007bff;
+  text-align: center;
+}
+
+#delete-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#delete-section label {
+  font-weight: bold;
+  color: #555;
+}
+
+#delete-section input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#delete-section button {
+  padding: 10px;
+  background-color: #dc3545;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#delete-section button:hover {
+  background-color: #c82333;
+}
+#delete-car-section {
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+}
+
+#delete-car-section h2 {
+  color: #007bff;
+  text-align: center;
+}
+
+#delete-car-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#delete-car-section label {
+  font-weight: bold;
+  color: #555;
+}
+
+#delete-car-section input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#delete-car-section button {
+  padding: 10px;
+  background-color: #dc3545;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#delete-car-section button:hover {
+  background-color: #c82333;
+}

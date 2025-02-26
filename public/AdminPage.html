@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="adminPage.css" />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+  </head>
+  <body>
+    <h1>Admin Dashboard</h1>
+    <section id="search-section">
+      <h2>Căutare persoane</h2>
+      <div class="search-container">
+        <input
+          type="text"
+          id="search-name-input"
+          placeholder="Introduceți numele pentru căutare"
+          class="search-input"
+        />
+        <button id="search-btn" class="search-btn">Caută</button>
+      </div>
+
+      <h3>Rezultatele căutării</h3>
+      <table id="search-results-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nume</th>
+            <th>Prenume</th>
+            <th>Data Nașterii</th>
+            <th>CNP</th>
+            <th>Număr Telefon</th>
+            <th>Stare Civilă</th>
+            <th>Sex</th>
+            <th>Date Personale</th>
+            <th>Acțiuni</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- Loader pentru feedback vizual -->
+    <div id="loader" style="display: none">Se încarcă...</div>
+
+    <!-- Toast pentru notificări -->
+    <div id="toast-container"></div>
+
+    <!-- Modal pentru editare -->
+    <div id="edit-modal" style="display: none;">
+      <div class="modal-content">
+        <h2>Editează Persoana</h2>
+        <form id="edit-form">
+          <input type="hidden" id="edit-id" />
+
+          <label for="edit-nume">Nume:</label>
+          <input type="text" id="edit-nume" required />
+
+          <label for="edit-prenume">Prenume:</label>
+          <input type="text" id="edit-prenume" required />
+
+          <label for="edit-data-nasterii">Data Nașterii:</label>
+          <input type="date" id="edit-data-nasterii" required />
+
+          <label for="edit-cnp">CNP:</label>
+          <input type="text" id="edit-cnp" required />
+
+          <label for="edit-telefon">Număr Telefon:</label>
+          <input type="text" id="edit-telefon" required />
+
+          <label for="edit-stare-civila">Stare Civilă:</label>
+          <select id="edit-stare-civila" required>
+            <option value="Necasatorit">Necasatorit</option>
+            <option value="Casatorit">Casatorit</option>
+            <option value="Divortat">Divortat</option>
+            <option value="Vaduv">Vaduv</option>
+          </select>
+
+          <label for="edit-sex">Sex:</label>
+          <select id="edit-sex" required>
+            <option value="M">Masculin</option>
+            <option value="F">Feminin</option>
+          </select>
+
+          <h3>Contacte de Urgență</h3>
+          <div id="emergency-contacts-section"></div>
+          
+          <h3>Cazier</h3>
+          <div id="criminal-records-section"></div>
+          
+          <h3>Acte</h3>
+          <div id="documents-section"></div>
+          
+          <h3>Mașini</h3>
+          <div id="cars-section"></div>
+          
+          <h3>Adrese</h3>
+          <div id="addresses-section"></div>
+          
+          <button type="submit">Salvează</button>
+          <button type="button" id="cancel-btn">Anulează</button>
+        </form>
+      </div>
+    </div>
+
+
+    <section id="search-contact-section">
+      <h2>Caută Contact de Urgență</h2>
+      <div class="search-container">
+        <input
+          type="text"
+          id="search-plate-input"
+          placeholder="Introdu numărul de înmatriculare"
+          class="search-input"
+        />
+        <button id="search-contact-btn" class="search-btn">Caută Contact</button>
+      </div>
+    
+      <h3>Contacte de Urgență</h3>
+      <table id="contact-results-table">
+        <thead>
+          <tr>
+            <th>Nume Persoană:</th>
+            <th>Prenume Persoană:</th>
+            <th>Nume Contact</th>
+            <th>Relație</th>
+            <th>Număr Telefon</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="3">Introduceți un număr de înmatriculare pentru a vedea rezultatele.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    
+
+    <section id="expired-docs-section">
+      <h2>Raport Acte Expirate</h2>
+      <button id="load-expired-docs-btn" class="search-btn">Încarcă Raport</button>
+    
+      <h3>Rezultatul Raportului</h3>
+      <table id="expired-docs-table" border="1">
+        <thead>
+          <tr>
+            <th>ID Persoană</th>
+            <th>Nume</th>
+            <th>Prenume</th>
+            <th>Tip Act</th>
+            <th>Număr Acte Expirate</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+
+    <section id="most-recent-case-section">
+      <h2>Cel Mai Recent Caz</h2>
+      <button id="recent" class="nav-btn">Afișează Cel Mai Recent Caz</button>
+      <table id="most-recent-case-table" border="1">
+        <thead>
+            <tr>
+                <th>Nume</th>
+                <th>Prenume</th>
+                <th>Infracțiune</th>
+                <th>Data Comiterii</th>
+                <th>Sentința</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    </section>
+    
+    
+
+    <section id="top-users-by-county-section">
+      <h2>Top Utilizatori pe Județ</h2>
+      <button id="load-top-users-btn" class="search-btn">Încarcă Raport</button>
+      <h3>Rezultatul Raportului</h3>
+      <table id="top-users-by-county-table" border="1">
+        <thead>
+          <tr>
+            <th>ID Persoană</th>
+            <th>Nume</th>
+            <th>Prenume</th>
+            <th>Total Evenimente</th>
+            <th>Județ</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="cars-section">
+      <h2>Lista Mașinilor Ordinate după Marcă</h2>
+      <button id="load-cars-btn" class="action-btn">Încarcă Lista</button>
+      <table id="cars-table">
+        <thead>
+          <tr>
+
+            <th>Marcă</th>
+            <th>Model</th>
+            <th>An Fabricație</th>
+            <th>Număr Înmatriculare</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="6">Apasă pe butonul de mai sus pentru a încărca datele.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    
+    <section id="add-person-section" >
+      <h2>Adaugă Persoană</h2>
+      <form id="add-person-form">
+          <label for="add-nume">Nume:</label>
+          <input type="text" id="add-nume" required />
+  
+          <label for="add-prenume">Prenume:</label>
+          <input type="text" id="add-prenume" required />
+  
+          <label for="add-data-nasterii">Data Nașterii:</label>
+          <input type="date" id="add-data-nasterii" required />
+  
+          <label for="add-cnp">CNP:</label>
+          <input type="text" id="add-cnp" required />
+  
+          <label for="add-telefon">Număr Telefon:</label>
+          <input type="text" id="add-telefon" />
+  
+          <label for="add-stare-civila">Stare Civilă:</label>
+          <select id="add-stare-civila">
+              <option value="">Selectează</option>
+              <option value="Necasatorit">Necăsătorit</option>
+              <option value="Casatorit">Căsătorit</option>
+              <option value="Divortat">Divorțat</option>
+              <option value="Vaduv">Văduv</option>
+          </select>
+  
+          <label for="add-sex">Sex:</label>
+          <select id="add-sex" required>
+              <option value="">Selectează</option>
+              <option value="M">Masculin</option>
+              <option value="F">Feminin</option>
+          </select>
+  
+          <button type="submit">Adaugă Persoană</button>
+      </form>
+  </section>
+  
+  <section id="delete-section">
+    <h2>Șterge Mașini sau Cazier Judiciar</h2>
+  
+    <section id="delete-car-section">
+      <h2>Șterge Mașină după Numărul de Înmatriculare</h2>
+      <form id="delete-car-form">
+        <label for="delete-numar-inmatriculare">Număr Înmatriculare:</label>
+        <input type="text" id="delete-numar-inmatriculare" placeholder="Introduceți numărul de înmatriculare" required />
+    
+        <button type="submit" class="action-btn">Șterge Mașină</button>
+      </form>
+    </section>
+    
+  
+    <!-- Form for deleting judicial records -->
+    <h3>Șterge Cazier Judiciar</h3>
+    <form id="delete-cazier-form">
+      <label for="delete-cazier-nume">Nume:</label>
+      <input type="text" id="delete-cazier-nume" required />
+  
+      <label for="delete-cazier-prenume">Prenume:</label>
+      <input type="text" id="delete-cazier-prenume" required />
+  
+      <label for="delete-cazier-cnp">CNP:</label>
+      <input type="text" id="delete-cazier-cnp" required />
+  
+      <button type="submit" class="action-btn">Șterge Cazier</button>
+    </form>
+  </section>
+  
+
+
+    <footer id="main-footer">
+      <p>© 2025 PROIECT</p>
+    </footer>
+    
+    <script src="adminPage.js"></script>
+  </body>
+</html>

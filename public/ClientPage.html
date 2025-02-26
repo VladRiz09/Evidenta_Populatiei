@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Dashboard</title>
+    <link rel="stylesheet" href="clientPage.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="logo.jpg" alt="Logo" class="logo" />
+        <h1 id="welcome-message">Bună ziua!</h1>
+      </div>
+    </header>
+
+    <nav>
+      <button id="view-my-data-btn" class="nav-btn">Datele Mele</button>
+      <button id="view-my-docs-btn" class="nav-btn">Actele Mele</button>
+      <button id="view-my-cars-btn" class="nav-btn">Mașinile Mele</button>
+      <button id="view-my-homes-btn" class="nav-btn">Locuințele Mele</button>
+      <button id="view-my-cazier-btn" class="nav-btn">Cazierul meu</button>
+      <button id="view-events-by-county-btn" class="nav-btn">Evenimente pe Județe</button>
+      <button id="view-popular-docs-btn" class="nav-btn">Tipuri Documente pe Județe</button>
+      <button id="search-person-btn" class="nav-btn">Caută Persoană</button>
+      
+    </nav>
+
+    <main>
+      <section id="my-data-section" style="display: none">
+        <h2>Datele Mele</h2>
+        <table id="my-data-table" border="1">
+          <thead>
+            <tr>
+              <th>Nume</th>
+              <th>Prenume</th>
+              <th>Data Nașterii</th>
+              <th>CNP</th>
+              <th>Număr Telefon</th>
+              <th>Stare Civilă</th>
+              <th>Sex</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="my-docs-section" style="display: none">
+        <h2>Actele Mele</h2>
+        <table id="my-docs-table" border="1">
+          <thead>
+            <tr>
+              <th>Tip Act</th>
+              <th>Data Expirării</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="my-cars-section" style="display: none">
+        <h2>Mașinile Mele</h2>
+        <table id="my-cars-table" border="1">
+          <thead>
+            <tr>
+              <th>Marcă</th>
+              <th>Model</th>
+              <th>An Fabricatie</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="my-homes-section" style="display: none">
+        <h2>Locuințele Mele</h2>
+        <table id="my-homes-table" border="1">
+          <thead>
+            <tr>
+              <th>Judet</th>
+              <th>Oras</th>
+              <th>Strada</th>
+              <th>Numar</th>
+              <th>Bloc</th>
+              <th>Apartament</th>
+              <th>CodPostal</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="my-cazier-section" style="display: none">
+        <h2>Cazierul Meu</h2>
+        <table id="my-cazier-table" border="1">
+          <thead>
+            <tr>
+              <th>Infractiune</th>
+              <th>Data_Comiterii</th>
+              <th>Sentinta</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="search-person-section" style="display: none">
+        <h2>Caută o Persoană</h2>
+        <div class="search-container">
+          <input
+            type="text"
+            id="search-name-input"
+            placeholder="Introdu numele persoanei"
+            class="search-input"
+          />
+          <button id="search-btn" class="search-btn">Caută</button>
+        </div>
+
+        <h3>Rezultatele Căutării</h3>
+        <table id="search-results-table" border="1">
+          <thead>
+            <tr>
+              <th>Nume</th>
+              <th>Prenume</th>
+              <th>Data Nașterii</th>
+              <th>Număr Telefon</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="events-by-county-section" style="display: none">
+        <h2>Evenimente pe Județe</h2>
+        <table id="events-by-county-table" border="1">
+            <thead>
+                <tr>
+                    <th>Județ</th>
+                    <th>Total Evenimente</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+      
+
+    <section id="popular-docs-section" style="display: none">
+      <h2>Tipuri Populare de Documente pe Județe</h2>
+      <table id="popular-docs-table" border="1">
+          <thead>
+              <tr>
+                  <th>Județ</th>
+                  <th>Tip Document</th>
+                  <th>Total Documente</th>
+              </tr>
+          </thead>
+          <tbody></tbody>
+      </table>
+    </section>
+  
+
+  </main>
+    
+
+    
+    <div id="loader" style="display: none"></div>
+    <!-- Loader -->
+    <div id="toast-container"></div>
+    <!-- Notificări -->
+
+    <script src="client.js"></script>
+  </body>
+</html>
